@@ -1,0 +1,67 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+
+ <div class="row">
+  <h3>Welcome <span class="text-capitalize"> {{request.user}}</h3>
+  <div class="col-sm-3">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn {{active}} btn-dark">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li>
+   </ul>
+
+
+   {% comment %} profile details here start {% endcomment %}
+   <div>
+    <div class="card" style="width: 18rem;">
+      {% comment %} <img class="card-img-top" src="..." alt="Card image cap"> {% endcomment %}
+      <div class="card-body">
+        <h5 class="card-title">Full Name: {{ user.userprofile.fullname }}</h5>
+        <h6 class="card-title">Location: {{ user.userprofile.location }}</h6>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Age: {{ user.userprofile.age }}</li>
+        <li class="list-group-item">Phone-N: {{ user.userprofile.phone_num }}</li>
+        <li class="list-group-item">Gender:  {{ user.userprofile.gender }}</li>
+        <li class="list-group-item">Marital Status: {{ user.userprofile.marital }}</li>
+        <li class="list-group-item">Interest Area: {{ user.userprofile.interest }}</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">FB link</a>
+        <a href="#" class="card-link">wseb link</a>
+      </div>
+    </div>
+  </div>
+  <!--profile details here end-->
+  </div>
+
+  
+  <div class="col-sm-8 offset-sm-1">
+   <form action="" method="post" novalidate>
+    <h2>Add Your Delivery Address</h2>
+    {% csrf_token %}
+    {% for fm in form %}
+    <div class="form-group col-lg-6 mb-3">
+      {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors | striptags}}</small>
+    </div>
+    {% endfor %}
+    <div class="col-12 mt-3">
+      <button type="submit" class="btn btn-dark mb-3">Submit</button>
+    </div>
+   </form>
+   {% if messages %}
+   {% for message in messages %}
+   <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+   {% endfor %}
+   {% endif %}
+   
+  </div> <br><br><br><br><br><br><br><br>
+
+
+
+  
+ </div> <br><br><br><br><br><br><br><br>
+</div>
+{% endblock main-content %}

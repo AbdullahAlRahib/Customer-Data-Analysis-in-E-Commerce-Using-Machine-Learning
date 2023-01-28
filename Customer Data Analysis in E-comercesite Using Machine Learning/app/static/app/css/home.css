@@ -1,0 +1,14 @@
+.btn:hover{
+    
+    transform: scale(1.1);
+	transition: .5s;
+    color: #f31404;
+    box-shadow: #ff0808;
+    background-color: rgb(170, 170, 170);
+}
+.item:hover{
+    color: #151B8D;
+    transition: 0.5s;
+
+}
+

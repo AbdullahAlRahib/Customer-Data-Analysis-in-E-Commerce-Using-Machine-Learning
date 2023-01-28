@@ -1,0 +1,63 @@
+
+{% extends 'customadmin/orders.html' %}
+{% block title %}Customer Churn Prediction{% endblock title %}
+
+{% block body_block %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/single_spending.css' %}">
+</head>
+
+
+<h1 id='spending_title'>Product On time Delivery Prediction</h1>
+<br>
+<div id="spending_form">
+    <form method='POST'>
+        {% csrf_token %}
+        <div class="form-group">
+            <!--<label for="exampleInput1">Customer_care_calls:</label>-->
+            <input type="number" class="form-control" required name='Customer_care_calls' placeholder="Enter Customer Care Calls">
+        </div>
+        <div class="form-group">
+            <!--<label for="exampleInput2">Customer_rating:</label>-->
+            <input type="number" class="form-control" required name='Customer_rating' placeholder="Enter Customer Rating">
+        </div>
+        <div class="form-group">
+            <!--<label for="exampleInput3">Time on web:</label>-->
+            <input type="number" class="form-control" required name='Cost_of_the_Product' placeholder="Enter Cost of the Product">
+        </div>
+        <div class="form-group">
+            <!--<label for="exampleInput4">Length of membership:</label>-->
+            <input type="number" class="form-control" required name='Prior_purchases' placeholder="Enter Number of Prior Purchases">
+        </div>
+        
+        <div id="select_product_importance" style="position: absolute; left: 49.00%; width:17%;">
+            <select class="form-control" required name="Product_importance" >
+                <!--<option selected>Select Product Importance</option>-->
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        </div>
+        <label for="exampleInput4">Select Product Importance:</label>
+        <br>
+        <br>
+        <div class="form-group">
+            <!--<label for="exampleInput4">Length of membership:</label>-->
+            <input type="number" class="form-control" required name='Discount_offered' placeholder="Enter Discount offered">
+        </div>
+        <div class="form-group">
+            <!--<label for="exampleInput4">Length of membership:</label>-->
+            <input type="number" class="form-control" required name='Weight_in_gms' placeholder="Enter Weight In Gms">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+</div>
+
+{% if single_prediction != 'No data is Given' %}
+    <br>
+    <h3 id='spending_result'> {{single_prediction}}</h3>
+{% endif %}
+
+
+{% endblock %}

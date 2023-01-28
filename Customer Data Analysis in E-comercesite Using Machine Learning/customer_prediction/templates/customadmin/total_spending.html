@@ -1,0 +1,102 @@
+
+{% extends 'customadmin/orders.html' %}
+{% block title %}Customer Churn Prediction{% endblock title %}
+
+
+{% block body_block %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/total.css' %}">
+</head>
+<h1 id="total_title">All Customer Annual Spending Prediction</h1>
+<br>
+<br>
+
+<h4>Total Number of Customer is {{total_cutomer_count}} </h4>
+<h4>The Prediction which will the Annual total Spend of all Customer is {{total_spending_count}} $ </h4>
+<br><br><br>
+{% csrf_token %}
+<div style="width: 100%; height: 525px; border-style: solid; border-width: 2px;">
+    <h1 style="width: 100%;  font-size: 22px; text-align: center;  font-weight: bold; color: white; background-color: grey; padding: 1%; ">
+        Customer Annual Spending Clusters Based On Different Parameters
+    </h1>
+    <!-- cluster_graph_1-->
+    <div style="width: 100%;float: left;">
+        {% autoescape off %}
+            {{cluster_graph_1}}
+        {% endautoescape %}
+    </div>
+</div>
+<br><br><br>
+<div style="width: 100%; height: 525px; border-style: solid; border-width: 2px;">
+    <h1 style="width: 100%;  font-size: 22px; text-align: center;  font-weight: bold; color: white; background-color: grey; padding: 1%; ">
+        Customer Annual Spending Based On Spending time on App
+    </h1>
+    <!-- App-->
+    <div style="width: 50%;float: left;">
+        {% autoescape off %}
+            {{app_graph_1}}
+        {% endautoescape %}
+    </div>
+    <div style="width: 50%;float: right;">
+        {% autoescape off %}
+            {{app_graph_2}}
+        {% endautoescape %}
+    </div>
+</div>
+<br><br><br><br>
+<div style="width: 100%; height: 525px; border-style: solid; border-width: 2px;">
+    <!--web-->
+    <h1 style="width: 100%;  font-size: 22px; text-align: center;  font-weight: bold; color: white; background-color: grey; padding: 1%; ">
+        Customer Annual Spending Based On Spending time on Website</h1>
+    <div style="width: 50%;float: left;">
+        {% autoescape off %}
+            {{web_graph_1}}
+        {% endautoescape %}
+    </div>
+    <div style="width: 50%;float: right;">
+        {% autoescape off %}
+            {{web_graph_2}}
+        {% endautoescape %}
+    </div>
+</div>
+
+<br><br><br><br>
+<div style="width: 100%; height: 525px; border-style: solid; border-width: 2px;">
+    <!--sesstion-->
+    <h1 style="width: 100%;  font-size: 22px; text-align: center;  font-weight: bold; color: white; background-color: grey; padding: 1%; ">
+        Customer Annual Spending Based On Average Session Length</h1>
+    <div style="width: 50%;float: left;">
+        {% autoescape off %}
+            {{sess_graph_1}}
+        {% endautoescape %}
+    </div>
+
+    <div style="width: 50%;float: right;">
+        {% autoescape off %}
+            {{sess_graph_2}}
+        {% endautoescape %}
+    </div>
+</div>
+
+<br><br><br><br>
+<div style="width: 100%; height: 525px; border-style: solid; border-width: 2px;">
+    <!--Membership-->
+    <h1 style="width: 100%;  font-size: 22px; text-align: center;  font-weight: bold; color: white; background-color: grey; padding: 1%; ">
+        Customer Annual Spending Based On Length Of Membership</h1>
+    <div style="width: 50%;float: left;">
+        {% autoescape off %}
+            {{mem_graph_1}}
+        {% endautoescape %}
+    </div>
+
+    <div style="width: 50%;float: right;">
+        {% autoescape off %}
+            {{mem_graph_2}}
+        {% endautoescape %}
+    </div>
+</div>
+<br><br><br><br>
+
+
+{% endblock %}

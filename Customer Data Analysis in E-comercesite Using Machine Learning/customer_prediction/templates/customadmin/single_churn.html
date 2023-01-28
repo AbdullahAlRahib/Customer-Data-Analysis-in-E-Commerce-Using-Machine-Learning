@@ -1,0 +1,108 @@
+
+{% extends 'customadmin/orders.html' %}
+
+{% block title %}Customer Churn Prediction{% endblock title %}
+
+{% block body_block %}
+<head>
+    {% load static %}
+        <link rel="stylesheet" href="{% static 'css/single_spending.css' %}">
+</head>
+<h1 id='spending_title'>Customer Churn Prediction</h1>
+<br>
+<div id="spending_form">
+    <form method='POST'>
+        {% csrf_token %}
+        <div  style="position: absolute; left: 42%; width:24%;">
+            <select class="form-control" required name="Gender" >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <label for="exampleInput4">Select Gender:</label>
+        <br>
+        <br>
+        <div style="position: absolute; left: 50%; width:16%;">
+            <select class="form-control" required name="PreferedOrderCat" >
+                <option value="Fashion">Fashion</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Laptop & Accessory">Laptop & Accessory</option>
+                <option value="Mobile & Accessory">Mobile & Accessory</option>
+                <option value="Mobile Phone">Mobile Phone</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <label for="exampleInput4">Select Prefered Order Catagories:</label>
+        <br>
+        <br>
+        <div style="position: absolute; left: 45%; width:21%;">
+            <select class="form-control" required name="MaritalStatus" >
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Devorced">Devorced</option>
+            </select>
+        </div>
+        <label for="exampleInput4">Select Marital Status:</label>
+        <br>
+        <br>
+        <div class="form-group">
+            <!--<label for="exampleInput1">Customer_care_calls:</label>-->
+            <input type="number" class="form-control" required name='NumberOfAddress' placeholder="Enter NumberOfAddress">
+        </div>
+        
+        <div class="form-group">
+            <!--<label for="exampleInput3">Time on web:</label>-->
+            <input type="number" class="form-control" required step=0.000001 name='OrderCount' placeholder="Enter Total Order Count">
+        </div>
+        <!--
+        <div class="form-group">
+            <label for="exampleInput2">Customer_rating:</label>
+            <input type="number" class="form-control" step=0.000001 required name='DaySinceLastOrder' placeholder="Enter Day Since Last Order">
+        </div>-->
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+</div>
+
+{% if single_customer_churn_Prediction != 'No data is Given' %}
+    <br>
+    <h3 id='spending_result'> {{single_customer_churn_Prediction}}</h3>
+{% endif %}
+
+<!--
+<form method='POST'>
+    {% csrf_token %}
+    <label for="Gender">Choose Gender:</label>
+    <select name="Gender" >
+        
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+    <br>
+    <label for="PreferedOrderCat">Choose Prefered Order Catagories:</label><br>
+    <select name="PreferedOrderCat" >
+        <option value="Fashion">Fashion</option>
+        <option value="Grocery">Grocery</option>
+        <option value="Laptop & Accessory">Laptop & Accessory</option>
+        <option value="Mobile & Accessory">Mobile & Accessory</option>
+        <option value="Mobile Phone">Mobile Phone</option>
+        <option value="Others">Others</option>
+    </select>
+    <br>
+    <label for="MaritalStatus">Choose Marital Status:</label><br>
+    <select name="MaritalStatus" >
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option value="Devorced">Devorced</option>
+    </select>
+    <br>
+    Number Of Address : <br>
+    <input type='number' required name='NumberOfAddress'><br>
+    Number Order Count :<br>
+    <input type='number' step=0.000001 required name='OrderCount'><br>
+    Day Since Last Order:<br>
+    <input type='number' step=0.000001 required name='DaySinceLastOrder'><br>
+    <button type='submit'>submit</button>
+</form>
+
+<h4>{{single_customer_churn_Prediction}}</h4>-->
+{% endblock %}

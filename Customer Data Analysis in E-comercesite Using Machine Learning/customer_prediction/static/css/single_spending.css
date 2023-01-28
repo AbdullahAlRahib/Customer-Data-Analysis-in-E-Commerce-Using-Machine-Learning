@@ -1,0 +1,26 @@
+#spending_title{
+    width: 100%;
+    /* padding-left: 10%; */
+    font-size: 40px;
+    text-align: center;
+    font-family: "Trebuchet MS";
+    text-transform: capitalize;
+    font-weight: bold;
+}
+#spending_form{
+    width: 70%;
+    padding-left: 30%;
+}
+.form-group{
+    color: rgb(0, 0, 0);
+}
+.form-control{
+    background-color: rgb(200, 224, 228);
+}
+#spending_result{
+    text-align: center;
+    font-family: "Trebuchet MS";
+    font-weight: bold;
+    background-color: aquamarine;
+}
+

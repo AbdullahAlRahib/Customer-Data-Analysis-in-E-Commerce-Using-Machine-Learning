@@ -1,0 +1,168 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!--Owl Carousel CSS-->
+    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+
+    <!--FontAwesome CSS-->
+    <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}">
+
+    <!--Custom CSS-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/src.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/home.css' %}">
+
+    <title>JOSSGIFT | {% block title %} {% endblock title %} </title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <div class="container">
+       <a class="navbar-brand mb-2 mt-2" href="/">JOSSGIFT E-Shop</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="/">Home</a>
+           </li>
+
+
+
+         </ul>
+         <!-- Search bar Start -->
+         <div class="input-group">
+           <input type="search" class="form-control" placeholder="Search Your Product">
+           <div class="d-flex">
+             <button class="btn btn-success" type="search">
+               <i class="fa fa-search"></i>
+             </button>
+           </div>
+         </div>
+         <p class="mt-4 text-center"><a href="https://www.gungorbudak.com/blog/2018/12/12/bootstrap-4-search-box-with-search-icon/"></a></p>
+         </div>
+           <!-- Search bar  end -->
+           
+           <!-- profileDropdown Start -->
+         <div>
+          <ul class="navbar-nav me-auto mb-2 mt-1 mb-lg-0">
+            {% if request.user.is_authenticated %}
+           <li class="nav-item dropdown mx-2 mb-2">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{request.user.username|capfirst}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+            </li>
+            <li class="nav-item mx-2">
+             <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{{totalitem}}</span>Cart</a>
+            </li>
+            {% else %}
+            <li class="nav-item mx-2">
+             <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+            </li>
+            <li class="nav-item mx-2">
+             <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
+            </li>
+            {% endif %}
+          </ul>
+         </div>
+         <!-- profileDropdown Start -->
+
+
+         
+       </div>
+     </div>
+    </nav>
+    {% block banner_slider %} {% endblock banner_slider %}
+    {% block livesale %} {% endblock livesale %}
+    {% block main-content %} {% endblock main-content %}
+    {% comment %} {% block payment-gateway %} {% endblock payment-gateway %} {% endcomment %}
+
+
+      <!-- Site footer -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <h6>Welcome to FUTURE VISION JOSSGIFT PROJECT</h6>
+              <p class="text-justify">Our principle is that the student comes first.
+                 Our constant aim is to extend all kinds of assistance that students
+                  may require to enroll for their desired courses in the foreign 
+                  college/university that suits them best. Simultaneously,
+                   we ensure a swift and smooth completion of the students’ 
+                   admission process, visa application procedure as well
+                    as give them brief details on the etiquette, laws, 
+                    important contact addresses and cultural traits of
+                     the country where they go to seek higher studies.
+                      Our counselors work hard to ensure that they help
+                       you make an informed decision about your study choices.
+                        We will not market a course or an institution to
+                         you just because we may gain from it in some way.
+                          Instead, our counselors work with you to find out what suits you the best. </div>
+  
+            <div class="col-xs-6 col-md-3">
+              <h6>Customer Care</h6>
+              <ul class="footer-links">
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Our App</a></li>
+              </ul>
+            </div>
+  
+            <div class="col-xs-6 col-md-3">
+              <h6>Quick Links</h6>
+              <ul class="footer-links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Contribute</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Other's Website</a></li>
+              </ul>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+              <p class="copyright-text">Copyright & copy; 2022 All Rights Reserved by <b>FUTURE-V E-Shop</b></p>
+            </div>
+  
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <ul class="social-icons">
+                <li><a href="https://www.facebook.com/JossGiftbd" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.facebook.com/JossGiftbd" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.facebook.com/JossGiftbd" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                <li><a class="linkedin" href="https://www.facebook.com/JossGiftbd" target="_blank"><i class="fab fa-linkedin"></i></a></li>   
+              </ul>
+            </div>
+          </div>
+        </div>
+  </footer>
+    
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'app/js/all.min.js' %}"></script>
+    <script src="{% static 'app/js/myscript.js' %}"></script>
+  </body>
+</html>

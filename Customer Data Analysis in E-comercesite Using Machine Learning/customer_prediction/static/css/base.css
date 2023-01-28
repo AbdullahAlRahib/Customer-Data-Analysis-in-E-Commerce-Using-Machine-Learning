@@ -1,0 +1,40 @@
+ul.menu li {
+	list-style: none;
+	display: inline-block;
+}
+
+.sideber-menu{
+    z-index: 1000;
+    position: fixed;
+    height: 100%;
+    background: #37474F;
+    width: 18%;
+	left: 0;
+}
+
+.sideber-menu ul {
+    padding: 10px;
+}
+
+.sideber-menu ul li{
+	list-style: none;
+}
+
+.sideber-menu ul li a{
+	text-decoration: none;
+	font-size: 16px;
+	padding-left: 5%;
+    color:azure;
+    font-weight: bold;
+}
+
+.dropdown-menu{
+	border: none;
+}
+
+.content{
+	padding-left: 0;
+}
+.dropdown-menu.show {
+    background: rgb(86, 86, 94);
+}

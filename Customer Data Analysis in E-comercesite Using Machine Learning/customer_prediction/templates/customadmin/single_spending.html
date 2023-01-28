@@ -1,0 +1,43 @@
+
+{% extends 'customadmin/orders.html' %}
+{% block title %}Customer Churn Prediction{% endblock title %}
+
+{% block body_block %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/single_spending.css' %}">
+</head>
+
+
+<h1 id='spending_title'>Customer Annual Spending Prediction</h1>
+<br>
+<div id="spending_form">
+    <form method='POST'>
+        {% csrf_token %}
+        <div class="form-group">
+            <!--<label for="exampleInput1">Avg. Session Length:</label>-->
+            <input type="number" class="form-control" step=0.000001 required name='avg_session_len' placeholder="Enter Average Session Length">
+        </div>
+        <div class="form-group">
+            <!--<label for="exampleInput2">Time on App:</label>-->
+            <input type="number" class="form-control" step=0.000001 required name='time_on_app' placeholder="Enter Average Spending time on App">
+        </div>
+        <div class="form-group">
+            <!--<label for="exampleInput3">Time on web:</label>-->
+            <input type="number" class="form-control" step=0.000001 required name='time_on_web' placeholder="Enter Average Spending time on Website">
+        </div>
+        <div class="form-group">
+            <!--<label for="exampleInput4">Length of membership:</label>-->
+            <input type="number" class="form-control" step=0.000001 required name='len_of_membership' placeholder="Enter Length of Membership">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+</div>
+
+{% if single_prediction != 'No data is Given' %}
+    <br>
+    <h3 id='spending_result'>The Annual Spending of the customer is {{single_prediction}} $</h3>
+{% endif %}
+
+
+{% endblock %}
